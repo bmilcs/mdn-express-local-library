@@ -1,3 +1,4 @@
+const dotenv = require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -8,6 +9,19 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
 var app = express();
+
+const ATLAS_USERNAME = process.env.ATLAS_USER;
+const ATLAS_PASSWORD = process.env.ATLAS_PASS;
+
+// Set up mongoose connection
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
+const mongoDB = `mongodb+srv://${ATLAS_USERNAME}:${ATLAS_PASSWORD}@cluster0.rv32dqm.mongodb.net/local_library?retryWrites=true&w=majority`;
+
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
