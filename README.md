@@ -37,3 +37,7 @@ For example:
 Model View Controller in Express
 
 ![Express MVC](screenshots/mvc_express.png)
+
+Form Handling Process
+
+![Form Handling](screenshots/web_server_form_handling.png)
