@@ -2,6 +2,24 @@
 
 [Source](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/skeleton_website)
 
+## Run Locally
+
+```sh
+# clone this repo
+git clone https://github.com/bmilcs/mdn-express-local-library
+
+# change directories
+cd mdn-express-local-library
+
+# install dependencies
+npm install
+
+# run server
+npm run serverstart
+```
+
+## Notes
+
 UML association diagram:
 
 - shows models we define in boxes
@@ -15,5 +33,7 @@ For example:
 - Numbers close to `Genre`: show a `Book` can have zero or more associated genres
 
 ![UML Association Diagram](screenshots/library_website_-_mongoose_express.png)
+
+Model View Controller in Express
 
 ![Express MVC](screenshots/mvc_express.png)
