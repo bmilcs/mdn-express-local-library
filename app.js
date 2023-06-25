@@ -23,13 +23,11 @@ app.use(
   }),
 );
 
-const ATLAS_USERNAME = process.env.ATLAS_USER;
-const ATLAS_PASSWORD = process.env.ATLAS_PASS;
+const mongoDB = process.env.MONGO_URL;
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = `mongodb+srv://${ATLAS_USERNAME}:${ATLAS_PASSWORD}@cluster0.rv32dqm.mongodb.net/local_library?retryWrites=true&w=majority`;
 
 main().catch(err => console.log(err));
 async function main() {
