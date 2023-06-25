@@ -36,6 +36,15 @@ async function main() {
   await mongoose.connect(mongoDB);
 }
 
+// Set up rate limiter: maximum of twenty requests per minute
+const RateLimit = require("express-rate-limit");
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 100,
+});
+// Apply rate limiter to all requests
+app.use(limiter);
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -44,7 +53,10 @@ app.use(logger("dev"));
 app.use(express.json()); // populate req.body w/ form fields
 app.use(express.urlencoded({ extended: false })); // populate req.body w/ form fields
 app.use(cookieParser());
+
+// add compression to the middleware chain
 app.use(compression());
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
