@@ -1,6 +1,31 @@
 # MDN's Local Library Express Tutorial
 
+[Live URL](https://mdnlibrary.bmilcs.com)
+
 [Source](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/skeleton_website)
+
+## Technologies Used
+
+- MVC: Model View Controller
+- Express: NodeJS framework
+- Pug: Template Engine
+- MongoDB: NoSQL Database
+- Mongoose ORM
+- Railway PaaS
+
+NPM Packages:
+
+- `compression`: gzip, improved performance
+- `dotenv`: .env files
+- `express-async-handler`: try/catch wrapper function with automatic error handling
+- `express-rate-limit`: prevent excessive API calls
+- `express-validator`: validate `req.body` data from forms
+- `helmet`: vulnerability protection
+- `nodemon`: automatic server reload on changes
+
+## Summary
+
+This was a fantastic tutorial written by Mozilla, covering the ins and outs of a basic full stack web app. It included best practices for deployment, the MVC pattern and helpful packages for dealing with common backend tasks.
 
 ## Run Locally
 
