@@ -92,12 +92,35 @@ exports.bookinstance_create_post = [
 
 // Display BookInstance delete form on GET.
 exports.bookinstance_delete_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: BookInstance delete GET");
+  const bookInstance = await BookInstance.findById(req.params.id)
+    .populate("book")
+    .exec();
+
+  if (bookInstance === null) {
+    // No results.
+    const err = new Error("Book copy not found");
+    err.status = 404;
+    return next(err);
+  }
+
+  console.log("rendering delete bookinstance view");
+
+  res.render("bookinstance_delete", {
+    title: "Book:",
+    bookinstance: bookInstance,
+  });
 });
 
 // Handle BookInstance delete on POST.
 exports.bookinstance_delete_post = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: BookInstance delete POST");
+  // Get bookinstance
+  await BookInstance.findById(req.params.id).exec();
+
+  if (BookInstance !== null) {
+    //Delete book instance
+    await BookInstance.findByIdAndRemove(req.body.bookinstanceid);
+    res.redirect("/catalog/bookinstances");
+  }
 });
 
 // Display BookInstance update form on GET.
